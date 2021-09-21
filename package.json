@@ -1,13 +1,13 @@
 {
   "name": "discord-bot-captcha",
   "version": "1.2",
-  "description": "",
+  "description": "discord-bot-captcha is a simple Captcha Discord bot.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "pcesarjj",
+  "author": "github.com/pauloodev",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.4",
