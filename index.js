@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client({ fetchAllMembers: true });
+const client = new Discord.Client();
 const config = require('./config.json');
 const active = new Map();
 var prefix = config.prefix;
@@ -11,7 +11,7 @@ client.on('ready', () => {
 client.on('message', message => {
     if (message.mentions.has(config.bot_id) && message.content === `<@!${config.bot_id}>`) {
         if (message.author.bot) return
-        const message_bot = message.channel.send(`Opa ${message.author}, me chamo ` + '`Sam`' + `.\nPara saber mais sobre mim, digite: **s!ajuda**.`);
+        const message_bot = message.channel.send(`Opa ${message.author}, me chamo ` + '`' + `${config.bot_name}` + '`' + `.\nPara saber mais sobre mim, digite: **${config.prefix}help**.`);
         setTimeout(() => { message_bot.delete(); }, 10000)
         message.delete()
     }

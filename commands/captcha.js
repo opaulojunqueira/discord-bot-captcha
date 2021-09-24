@@ -7,15 +7,12 @@ exports.run = async (client, message, args, ops) => {
         var seconds = ((millis % 60000) / 1000).toFixed(0);
         return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     }
-
     var role_id = await db.fetch(`role.${message.guild.id}`),
         channel = await db.fetch(`channel.${message.guild.id}`),
-        captcha_text = await db.fetch(`captcha.${message.guild.id}.${message.author.id}`),
         captcha_db = await db.get(`captcha.time.${message.author.id}`),
         before_captcha = await db.get(`before.captcha.${message.author.id}`),
         captcha_time = 70000,
         before_captcha_time = 90000;
-
     if (channel == null) return message.channel.send('<:AVISO:592056840943304704> | Chat não foi definido, use o comando `s!setchannel`')
     if (role_id == null) return message.channel.send('<:AVISO:592056840943304704> | Cargo não foi definido, use o comando `s!setrole`')
     if (message.channel.id === channel) {
@@ -33,10 +30,10 @@ exports.run = async (client, message, args, ops) => {
                         member = message.member;
                     db.set(`captcha.${message.guild.id}.${message.author.id}`, res.data.captcha_text)
                     let embed = new Discord.MessageEmbed()
-                        .setDescription('Para verificar faça a captcha abaixo. Digite as letras:')
+                        .setDescription('⚠️ | Para verificar faça a captcha abaixo. Digite as letras:')
                         .setImage(res.data.captcha)
                         .setColor('#964B00')
-                        .setFooter(`Comando executado por: ${message.author.tag}`)
+                        .setFooter(`Crie seu Bot de Catpcha: bit.ly/botcaptcha`)
                         .setTimestamp()
                     message.reply('', embed).then(msg => {
                         const filter = m => m.author.id === message.author.id;
@@ -44,7 +41,7 @@ exports.run = async (client, message, args, ops) => {
                         collector.on('collect', m => {
                             var msgcaptcha = m.content
                             if (msgcaptcha === db.fetch(`captcha.${message.guild.id}.${message.author.id}`)) {
-                                message.reply('<:concluido:604106430038933516> |Você **__acertou__** a captcha!')
+                                message.reply('<:concluido:604106430038933516> | Você **__acertou__** a captcha!')
                                 member.roles.add(role_v)
                                 db.delete(`captcha.${message.guild.id}.${message.author.id}`)
                                 db.delete(`captcha.time.${message.author.id}`)
