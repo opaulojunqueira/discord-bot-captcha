@@ -1,4 +1,4 @@
-# discordjs-bot-captcha
+# discord-bot-captcha
 
 A simple captcha bot for Discord.
 Using JavaScript and an API that generates an image with random letters we have our base.
