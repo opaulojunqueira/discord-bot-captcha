@@ -3,6 +3,8 @@
 A simple captcha bot for Discord.
 Using JavaScript and an API that generates an image with random letters we have our base.
 
+<a href="https://www.buymeacoffee.com/cesinha" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="28" width="119"></a>
+
 ---
 Install the required dependency presented in the **package.json** file
 ```
